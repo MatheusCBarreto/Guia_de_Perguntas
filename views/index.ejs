@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guia de perguntas</title>
+</head>
+
+<body>
+  <h1>Guia de perguntas</h1>
+  <hr>
+  <h3>Lista de perguntas</h3>
+
+  <p>
+    <%= nome %>
+  </p>
+  <p>
+    <%= lang %>
+  </p>
+  <p>
+    <%= empresa %>
+  </p>
+  <p>
+    <%= inscritos %>
+  </p>
+
+  <% if (msg==false) { %>
+    <h3>Isso é um erro!</h3>
+    <% } else { %>
+      <h3>Nenhum erro!</h3>
+      <% }%>
+</body>
+
+</html>
