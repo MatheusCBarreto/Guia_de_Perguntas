@@ -9,6 +9,23 @@
         <p>
           <%= pergunta.descricao%>
         </p>
+        <hr>
+        <form method="POST" action="/responder">
+          <h3>Responda: </h3>
+          <textarea placeholder="Digite sua resposta aqui." class="form-control" name="corpo">
+          </textarea>
+          <input type="hidden" name="perguntaId" value="<%= pergunta.id %>">
+          <button type="submit" class="btn btn-success margin-top">Responder</button>
+        </form>
+        <h2>Respostas:</h2>
+        <hr>
+        <% respostas.forEach((resposta)=> { %>
+          <div class="card">
+            <div class="card-body">
+              <%= resposta.corpo %>
+            </div>
+          </div>
+          <% }) %>
       </div>
   </body>
   <%- include('partials/footer') %>
