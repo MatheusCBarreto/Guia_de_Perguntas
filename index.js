@@ -22,11 +22,15 @@ app.use(bodyParser.json());
 
 
 app.get("/", (req, res) => {
-  Pergunta.findAll({raw: true}).then((perguntas) => {
+  Pergunta.findAll({
+    raw: true, 
+    order: [
+    ["id", "DESC"]
+  ]})
+  .then((perguntas) => {
     res.render('index', {
       perguntas: perguntas,
     });
-
   })
 });
 
@@ -45,8 +49,22 @@ app.post("/salvarperguntas", (req, res) => {
   }).then(() => {
     res.redirect("/");
   })
-  
 });
+
+app.get("/pergunta/:id", (req, res) => {
+  let id = req.params.id;
+  Pergunta.findOne({
+    where: {id: id},
+  }).then((pergunta) => {
+    if (pergunta != undefined) {
+      res.render("pergunta", {
+        pergunta: pergunta
+      } );
+    } else {
+      res.redirect("/")
+    }
+  })
+})
 
 
 app.listen(8080, () => {
